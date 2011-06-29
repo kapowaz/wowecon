@@ -1,4 +1,4 @@
 wowecon
 =======
 
-Provides a RESTful API to wowecon.com's data.
+Ruby API to wowecon.com market data.
