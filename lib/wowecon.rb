@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require 'wowecon/currency_helpers.rb'
 require 'wowecon/currency.rb'
 
 module Wowecon

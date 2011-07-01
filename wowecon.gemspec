@@ -1,7 +1,7 @@
 Gem::Specification.new do |spec|
   spec.name                  = 'wowecon'
-  spec.version               = '0.1.0'
-  spec.date                  = '2011-06-30'
+  spec.version               = '0.1.1'
+  spec.date                  = '2011-07-01'
   spec.summary               = "wowecon"
   spec.description           = "Ruby API to wowecon.com market data."
   spec.authors               = ["Ben Darlow"]
