@@ -16,7 +16,12 @@ module Wowecon
           output += "#{value.to_s.gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")}#{denom.to_s[0,1]} "
         end
       end
-      output.strip
+      
+      if output == ""
+        "no price"
+      else
+        output.strip
+      end
     end
 
     def to_html

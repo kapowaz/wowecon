@@ -26,7 +26,7 @@ describe Wowecon::Currency do
   
   it "returns a currency value of zero if initialised with an invalid hash" do
     zero = Wowecon::Currency.new({:error => "price not found"})
-    zero.to_f.should == 0 && zero.to_hash.should == {:gold => 0, :silver => 0, :copper => 0}
+    zero.to_s.should == "no price" && zero.to_f.should == 0 && zero.to_hash.should == {:gold => 0, :silver => 0, :copper => 0}
   end
   
   it "can create a string representation of the currency value" do
