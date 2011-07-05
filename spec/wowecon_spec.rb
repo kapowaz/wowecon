@@ -8,20 +8,8 @@ describe Wowecon do
     
     unless price.has_key? :error
       describe "if price data was found" do
-        it "should have an integer gold value" do
-          (price.should have_key :gold) && price[:gold].class.should == Fixnum
-        end
-        
-        it "should have an integer silver value" do
-          (price.should have_key :silver) && price[:silver].class.should == Fixnum
-        end
-        
-        it "should have an integer copper value" do
-          (price.should have_key :copper) && price[:copper].class.should == Fixnum
-        end
-        
-        it "should have float value representing the complete price" do
-          (price.should have_key :float) && price[:float].class.should == Float
+        it "should have an integer value" do
+          (price.should have_key :value) && price[:value].class.should == Fixnum
         end
       end
     else
@@ -36,9 +24,9 @@ describe Wowecon do
   
   # use http://data.wowecon.com/?type=price&item_name=Rock%20Furrow%20Boots to confirm
   describe "With known market data" do
-    it "should return a value of 7401.0 for this item" do
+    it "should return a value of 62000100 for this item" do
       price = Wowecon.price("Rock Furrow Boots")
-      price.should == {:gold=>7401, :silver=>0, :copper=>0, :float=>7401.0}
+      price.should == {:value => 62000100}
     end
   end
 

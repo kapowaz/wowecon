@@ -16,6 +16,15 @@ describe Wowecon::Currency do
     currency.class.should == Wowecon::Currency
   end
   
+  it "can be initialised using an integer" do
+    currency = Wowecon::Currency.new(1420091)
+    currency.class.should == Wowecon::Currency
+  end
+  
+  it "responds to integer" do
+    (@currency.should respond_to :to_i) && @currency.to_i.should == 14200910
+  end
+  
   it "responds to hash" do
     (@currency.should respond_to :to_hash) && @currency.to_hash.should == {:gold => 1420, :silver => 9, :copper => 10}
   end
@@ -24,9 +33,9 @@ describe Wowecon::Currency do
     (@currency.should respond_to :to_f) && @currency.to_f.should == 1420.091
   end
   
-  it "returns a currency value of zero if initialised with an invalid hash" do
+  it "returns zero if initialised with an invalid hash" do
     zero = Wowecon::Currency.new({:error => "price not found"})
-    zero.to_s.should == "no price" && zero.to_f.should == 0 && zero.to_hash.should == {:gold => 0, :silver => 0, :copper => 0}
+    zero.should == 0
   end
   
   it "can create a string representation of the currency value" do

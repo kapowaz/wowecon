@@ -1,12 +1,21 @@
 module Wowecon
   module CurrencyHelpers
 
+    @value = 0
+
+    def to_i
+      @value
+    end
+
     def to_hash
-      {:gold => @gold, :silver => @silver, :copper => @copper}
+      copper = @value.to_s[-2..-1].to_i
+      silver = @value.to_s[-4..-3].to_i
+      gold   = @value.to_s[0..-5].to_i      
+      {:gold => gold, :silver => silver, :copper => copper}
     end
   
     def to_f
-      (@gold + (@silver.to_f / 100) + (@copper.to_f / 10000)).to_f
+      @value.to_f / 10000
     end
   
     def to_s
@@ -18,7 +27,7 @@ module Wowecon
       end
       
       if output == ""
-        "no price"
+        "0"
       else
         output.strip
       end
@@ -32,6 +41,10 @@ module Wowecon
         end
       end
       tags
+    end
+    
+    def ==(other) 
+      @value == other.to_i
     end
     
   end

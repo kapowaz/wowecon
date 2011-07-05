@@ -4,23 +4,16 @@ module Wowecon
   class Currency
     include Wowecon::CurrencyHelpers
     
-    attr_accessor :gold, :silver, :copper
-    
     def initialize(value)
-      if value.class == Float
-        f           = sprintf("%.4f", value).split(".")
-        self.gold   = f[0].to_i
-        self.silver = f[1][0,2].to_i
-        self.copper = f[1][2,2].to_i
+      if value.class == Fixnum
+        @value = value
+      elsif value.class == Float
+        @value = sprintf("%.4f", value).split(".").join("").to_i
       elsif value.class == Hash
         if value.key?(:gold) and value.key?(:silver) and value.key?(:copper)
-          self.gold   = value[:gold]
-          self.silver = value[:silver]
-          self.copper = value[:copper]
+          @value = "#{value[:gold]}#{sprintf("%02d", value[:silver])}#{sprintf("%02d", value[:copper])}".to_i
         else
-          self.gold   = 0
-          self.silver = 0
-          self.copper = 0
+          @value = 0
         end
       end
     end

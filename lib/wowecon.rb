@@ -27,8 +27,8 @@ module Wowecon
           currency[currency_type] = value[0].to_i
         end
       end
-      
-      currency.merge({:float => (currency[:gold] + (currency[:silver].to_f / 100) + (currency[:copper].to_f / 10000)).to_f})
+
+      {:value => "#{currency[:gold]}#{sprintf("%02d", currency[:silver])}#{sprintf("%02d", currency[:copper])}".to_i}
     else
       {:error => "price not found"}
     end
