@@ -5,16 +5,19 @@ module Wowecon
     include Wowecon::CurrencyHelpers
     
     def initialize(value)
-      if value.class == Fixnum
-        @value = value
-      elsif value.class == Float
-        @value = sprintf("%.4f", value).split(".").join("").to_i
-      elsif value.class == Hash
+      @value = case
+      when value.kind_of?(Fixnum)
+        value
+      when value.kind_of?(Float)
+        sprintf("%.4f", value).split(".").join("").to_i
+      when value.kind_of?(Hash)
         if value.key?(:gold) and value.key?(:silver) and value.key?(:copper)
-          @value = "#{value[:gold]}#{sprintf("%02d", value[:silver])}#{sprintf("%02d", value[:copper])}".to_i
+          "#{value[:gold]}#{sprintf("%02d", value[:silver])}#{sprintf("%02d", value[:copper])}".to_i
         else
-          @value = 0
+          nil
         end
+      else
+        nil
       end
     end
 

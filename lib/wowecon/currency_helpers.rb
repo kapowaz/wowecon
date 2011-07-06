@@ -47,5 +47,9 @@ module Wowecon
       @value == other.to_i
     end
     
+    def nil?
+      @value.nil?
+    end
+    
   end
 end
