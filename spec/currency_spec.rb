@@ -32,6 +32,10 @@ describe Wowecon::Currency do
       @currency = Wowecon::Currency.new({:gold => 1420, :silver => 9, :copper => 10})      
     end
     
+    it "responds with the integer representation by default" do
+      @currency.should == 14200910
+    end
+    
     it "responds to integer" do
       (@currency.should respond_to :to_i) and @currency.to_i.should == 14200910
     end

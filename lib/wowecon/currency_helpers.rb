@@ -43,10 +43,14 @@ module Wowecon
       tags
     end
     
+    def inspect
+      @value.to_i
+    end
+    
     def ==(other) 
       @value == other.to_i
     end
-
+    
     def >(other)
       @value > other.to_i
     end
