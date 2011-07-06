@@ -46,6 +46,22 @@ module Wowecon
     def ==(other) 
       @value == other.to_i
     end
+
+    def >(other)
+      @value > other.to_i
+    end
+    
+    def <(other)
+      @value < other.to_i
+    end
+    
+    def >=(other)
+      @value >= other.to_i
+    end
+    
+    def <=(other)
+      @value <= other.to_i
+    end
     
     def nil?
       @value.nil?
