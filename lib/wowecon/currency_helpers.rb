@@ -27,7 +27,7 @@ module Wowecon
       end
       
       if output == ""
-        "0"
+        ""
       else
         output.strip
       end

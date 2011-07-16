@@ -24,9 +24,9 @@ describe Wowecon do
   
   # use http://data.wowecon.com/?type=price&item_name=Rock%20Furrow%20Boots to confirm
   describe "With known market data" do
-    it "should return a value of 62000100 for this item" do
+    it "should return a value of 60000000 for this item" do
       price = Wowecon.price("Rock Furrow Boots")
-      price.should == {:value => 62000100}
+      price.should == {:value => 60000000}
     end
   end
 
