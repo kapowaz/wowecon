@@ -27,6 +27,11 @@ describe Wowecon::Currency do
     @nilcurrency.should be_nil
   end
   
+  it "returns a currency with a value of zero if initialised with 0" do
+    zero = Wowecon::Currency.new(0)
+    zero.class.should == Wowecon::Currency and zero.to_s.should == "0c"
+  end
+  
   describe "for a given valid currency" do
     before do
       @currency = Wowecon::Currency.new({:gold => 1420, :silver => 9, :copper => 10})      

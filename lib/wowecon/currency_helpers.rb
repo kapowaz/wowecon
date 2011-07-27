@@ -21,22 +21,17 @@ module Wowecon
     def to_s
       output = ""
       self.to_hash.each do |denom, value|
-        if value > 0 || output.length > 0
+        if value > 0 || output.length > 0 || denom == :copper
           output += "#{value.to_s.gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")}#{denom.to_s[0,1]} "
         end
       end
-      
-      if output == ""
-        ""
-      else
-        output.strip
-      end
+      output.strip
     end
 
     def to_html
       tags  = ""
       self.to_hash.each do |denom, value|
-        if value > 0 || tags.length > 0
+        if value > 0 || tags.length > 0 || denom == :copper
           tags += "<var class=\"#{denom.to_s}\">#{value.to_s.gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")}</var>"
         end
       end

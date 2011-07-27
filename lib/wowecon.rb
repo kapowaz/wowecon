@@ -4,7 +4,7 @@ require 'wowecon/currency_helpers.rb'
 require 'wowecon/currency.rb'
 
 module Wowecon
-  VERSION = '0.2.4'
+  VERSION = '0.2.5'
   
   def self.price(item_name, opts={})
     request_url = "http://data.wowecon.com/?type=price&item_name=#{uri_escape(item_name)}"
